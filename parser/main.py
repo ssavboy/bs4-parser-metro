@@ -19,7 +19,7 @@ def coffee(session):
     deffered = Deferred()
     results = [('Название', 'Цена со кидкой', 'Цена без скидки', 'Ссылка',)]
     pages = int(get_soup(session, urljoin(MAIN_URL, GOODS.get('coffee'))).select('.catalog-paginate > li')[-2].text)
-    for page in range(1):
+    for page in range(pages):
         coffee_url = urljoin(MAIN_URL, f'chaj-kofe-kakao/kofe?page={page + 1}')
         for section in tqdm(
             get_soup(
